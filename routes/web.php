@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('auth/login');
 });
 
 
-Route::get('/admin', 'App\Http\Controllers\AdminController@index'); 
+
+
+Auth::routes(); 
+
+Route::get('/admin', 'App\Http\Controllers\AdminController@index') -> middleware('auth');
 
 
 //Route user admin
@@ -52,3 +56,11 @@ Route::get('/admin', 'App\Http\Controllers\AdminController@index');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -12,7 +12,8 @@
         <div class="limiter">
         <div class="container-login100" style="background-image: url('asets/images/soverdi.jpeg');">
             <div class="wrap-login100">
-                <form class="login100-form validate-form">
+                <form action="{{route('login')}}" method="post" class="login100-form validate-form">
+                    @csrf
                     <span class="login100-form-logo" style="background-image: url('asets/images/Logo Soverdi.jpg'); background-size: 104px; background-position: center;">
                         <i class="zmdi zmdi-landscape"></i>
                     </span>
@@ -22,7 +23,7 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter username">
-                        <input class="input100" type="text" name="username" placeholder="Username">
+                        <input class="input100" type="text" name="username" placeholder="Username" value="{{old('username')}}">
                         <span class="focus-input100" data-placeholder="&#xf207;"></span>
                     </div>
 
