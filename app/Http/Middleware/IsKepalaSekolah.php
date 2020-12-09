@@ -17,7 +17,7 @@ class IsKepalaSekolah
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->level == '1') {
+        if (Auth::user() && Auth::user()->level == 1) {
 
             return $next($request);
         }

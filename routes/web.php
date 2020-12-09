@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-
+Route::get('/regis', 'App\Http\Controllers\InsertRegister@insert');
 
 
 Auth::routes(); 
