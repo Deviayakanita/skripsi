@@ -24,6 +24,8 @@ Auth::routes();
 
 Route::get('/admin', 'App\Http\Controllers\AdminController@index') -> middleware('auth');
 
+//route peserta didik crud
+Route::resource('pesertadidik', 'App\Http\Controllers\PesertadidikController');
 
 //Route user admin
 //Route user kepala sekolah

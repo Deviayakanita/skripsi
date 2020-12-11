@@ -27,10 +27,23 @@
                         <span class="focus-input100" data-placeholder="&#xf207;"></span>
                     </div>
 
+                    error('username')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+
+
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
                         <input class="input100" type="password" name="pass" placeholder="Password">
                         <span class="focus-input100" data-placeholder="&#xf191;"></span>
                     </div>
+
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
                     <div class="contact100-form-checkbox">
                         <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
