@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mutasimasuk extends Model
 {
-    use HasFactory;
+	protected $table = 'mutasi_masuk';
+
+    public $fillable = [
+    	'no_srt_pindah',
+        'nis',
+    	'id_siswa',
+    	'asal_sekolah',
+        'tingkat_kelas',
+        'tgl_masuk',
+        'alasan_pindah',
+        'status_mutasi',
+    ];
 }

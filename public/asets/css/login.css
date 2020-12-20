@@ -191,13 +191,128 @@ iframe {
 
 .wrap-login100 {
   width: 500px;
-  border-radius: 1px;
+  border-radius: 5px;
   overflow: hidden;
-  padding: 55px 55px 37px 55px;
-
+  padding: 55px 62px 60px 59px;
   background: rgb(103 103 103 / 42%);
   border: black 2px;
 }
+
+
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+.custom-control-label {
+  position: relative;
+  margin-bottom: 0;
+  vertical-align: top;
+  color: white;
+}
+
+.form-signin {
+  width: 100%;
+}
+
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #1d2124;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+
+
+/* Fallback for Edge
+-------------------------------------------------- */
+
+@supports (-ms-ime-align: auto) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #1d2124;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #1d2124;
+  }
+}
+
 
 
 /*------------------------------------------------------------------
@@ -240,7 +355,6 @@ iframe {
 .wrap-input100 {
   width: 100%;
   position: relative;
-  border-bottom: 2px solid rgba(255,255,255,0.24);
   padding-top: 20px;
 }
 
@@ -334,9 +448,10 @@ iframe {
 [ Restyle Checkbox ]*/
 
 .contact100-form-checkbox {
-  padding-left: 5px;
-  padding-top: 10px;
-  padding-bottom: 35px;
+  padding-left: 3px;
+  padding-top: 15px;
+  padding-bottom: 1px;
+
 }
 
 .input-checkbox100 {
@@ -348,11 +463,11 @@ iframe {
   font-size: 13px;
   color: #fff;
   line-height: 1.2;
-
   display: block;
   position: relative;
   padding-left: 26px;
   cursor: pointer;
+  padding: 20px
 }
 
 .label-checkbox100::before {
@@ -394,8 +509,6 @@ iframe {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -403,7 +516,6 @@ iframe {
 .login100-form-btn {
   font-family: Poppins-Medium;
   font-size: 16px;
-  color: #555555;
   line-height: 1.2;
 
   display: -webkit-box;

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 use App\Models\Pesertadidik;
 use App\Models\User;
@@ -18,6 +21,13 @@ class PesertadidikController extends Controller
     public function index()
     {
         return view('peserta_didik.index');
+    }
+
+
+    public function list()
+    {
+        $pesertadidiks = Pesertadidik::all();
+        return view('peserta_didik/listpesertadidik', compact('pesertadidiks'));
     }
 
     /**
@@ -42,7 +52,7 @@ class PesertadidikController extends Controller
             'nm_siswa' => request('nm_siswa'),
             'id_user' => auth()->id(),
             'jns_kelamin' => request('jns_kelamin'),
-            'nisn' => request('nisn'),
+            'nis' => request('nis'),
             'tmp_lahir' => request('tmp_lahir'),
             'tgl_lahir' => request('tgl_lahir'),
             'agama' => request('agama'),
@@ -51,6 +61,7 @@ class PesertadidikController extends Controller
             'kabupaten' => request('kabupaten'),
             'no_tlpn' => request('no_tlpn'),
             'email' => request('email'),
+            'tahun_ajaran' => request('tahun_ajaran'),
             'jurusan' => request('jurusan'),
             'sts_siswa' => request('sts_siswa'),
             'keterangan' => request('keterangan'),
@@ -76,7 +87,34 @@ class PesertadidikController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pesertadidik = Pesertadidik::find($id);
+        return view('peserta_didik/editpesertadidik', compact('pesertadidik'));
+    }
+
+    public function editpesertadidik (Request $request, $id)
+    {
+
+         DB::table('peserta_didik')->where('id_siswa', $id)
+            -> update([
+            'nm_siswa' => request('nm_siswa'),
+            'id_user' => auth()->id(),
+            'jns_kelamin' => request('jns_kelamin'),
+            'nis' => request('nis'),
+            'tmp_lahir' => request('tmp_lahir'),
+            'tgl_lahir' => request('tgl_lahir'),
+            'agama' => request('agama'),
+            'alamat_siswa' => request('alamat_siswa'),
+            'provinsi' => request('provinsi'),
+            'kabupaten' => request('kabupaten'),
+            'no_tlpn' => request('no_tlpn'),
+            'email' => request('email'),
+            'tahun_ajaran' => request('tahun_ajaran'),
+            'jurusan' => request('jurusan'),
+            'sts_siswa' => request('sts_siswa'),
+            'keterangan' => request('keterangan'),
+            ]);
+
+        return redirect('/peserta_didik/listpesertadidik');
     }
 
     /**

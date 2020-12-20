@@ -11,7 +11,7 @@ class InsertRegister extends Controller
     public function insert()
     {
         User::create([
-            'username' => 'adminn',
+            'username' => 'admin',
             'password' => Hash::make('qwerty123'),
             'level' => 0,
         ]);

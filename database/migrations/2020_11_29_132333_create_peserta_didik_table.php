@@ -19,7 +19,7 @@ class CreatePesertaDidikTable extends Migration
             $table->foreign('id_user')->references('id')->on('users');
             $table->string('nm_siswa', 50);
             $table->enum('jns_kelamin', ["Laki - Laki", "Perempuan"]);
-            $table->integer('nisn')->unique();
+            $table->integer('nis')->unique();
             $table->string('tmp_lahir', 20);
             $table->date('tgl_lahir');
             $table->string('agama', 20);
@@ -28,6 +28,7 @@ class CreatePesertaDidikTable extends Migration
             $table->string('kabupaten', 50);
             $table->string('no_tlpn', 15);
             $table->string('email', 30);
+            $table->string('tahun_ajaran', 20);
             $table->enum('jurusan', ["IPA", "IPS"]);
             $table->integer('sts_siswa')->unsigned();
             $table->string('keterangan', 50);

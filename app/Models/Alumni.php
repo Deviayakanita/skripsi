@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alumni extends Model
 {
-    use HasFactory;
+	protected $table = 'alumni';
+
+    public $fillable = [
+        // 'nis',
+    	'nm_pt',
+    	'id_siswa',
+    	'jns_pt',
+        'nm_fak',
+        'nm_jurusan',
+        'melanjutkan',
+        'status_alumni',
+    ];
 }

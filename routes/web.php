@@ -26,6 +26,21 @@ Route::get('/admin', 'App\Http\Controllers\AdminController@index') -> middleware
 
 //route peserta didik crud
 Route::resource('pesertadidik', 'App\Http\Controllers\PesertadidikController');
+Route::get('list', 'App\Http\Controllers\PesertadidikController@list');	
+Route::get('editpesertadidik/edit/{id}', 'App\Http\Controllers\PesertadidikController@edit');	
+Route::patch('pesertadidikedit/{id}', 'App\Http\Controllers\PesertadidikController@editpesertadidik');	
+//route orang tua crud
+Route::resource('orangtua', 'App\Http\Controllers\OrangtuaController');
+
+//route mutasi masuk crud
+Route::resource('mutasimasuk', 'App\Http\Controllers\MutasimasukController');
+
+//route mutasi keluar crud
+Route::resource('mutasikeluar', 'App\Http\Controllers\MutasikeluarController');
+
+//route alumni crud
+Route::resource('alumni', 'App\Http\Controllers\AlumniController');
+
 
 //Route user admin
 //Route user kepala sekolah

@@ -22,40 +22,37 @@
                         Sistem Informasi Eksekutif Peserta Didik SMAK Soverdi
                     </span>
 
-                    <div class="wrap-input100 validate-input" data-validate="Enter username">
-                        <input class="input100" type="text" name="username" placeholder="Username" value="{{old('username')}}">
-                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                     <div class="wrap-input100">
+                        <div class="form-label-group">
+                        <input type="username" id="inputEmail" class="form-control" placeholder="Email address" required autofocus name="username" value="{{old('username')}}">
+                        <label for="inputEmail">Username</label>
+                        </div>
                     </div>
 
-                    @error('username')
+                     @error('username')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                     @enderror
+
+                     <div class="wrap-input100">
+                        <div class="form-label-group">
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">
+                        <label for="inputPassword">Password</label>
+                        </div>
+                    </div>
+
+                    @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
 
-                    <div class="wrap-input100 validate-input" data-validate="Enter password">
-                        <input class="input100" type="password" name="password" placeholder="Password">
-                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
-                    </div>
-
-                     @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-
-                    <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                        <label class="label-checkbox100" for="ckb1">
-                            Remember me
-                        </label>
-                    </div>
-
-                    <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
-                            Login
-                        </button>
-                    </div>
+                    <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Remember password</label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log In</button>
                 </form>
             </div>
         </div>

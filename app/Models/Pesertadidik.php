@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Pesertadidik extends Model
 {
 	protected $table = 'peserta_didik';
+    protected $primaryKey = 'id_siswa';
 
     public $fillable = [
     	'nm_siswa',
     	'id_user',
         'jns_kelamin',
-        'nisn',
+        'nis',
         'tmp_lahir',
         'tgl_lahir',
         'agama',
@@ -22,6 +23,7 @@ class Pesertadidik extends Model
         'kabupaten',
         'no_tlpn',
         'email',
+        'tahun_ajaran',
         'jurusan',
         'sts_siswa',
         'keterangan',

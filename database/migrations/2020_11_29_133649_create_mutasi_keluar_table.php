@@ -18,7 +18,7 @@ class CreateMutasiKeluarTable extends Migration
             $table->unsignedBigInteger('id_siswa');
             $table->foreign('id_siswa')->references('id_siswa')->on('peserta_didik');
             $table->string('no_srt_pindah', 30);
-            $table->string('asal_sekolah', 50);
+            $table->string('sekolah_tujuan', 50);
             $table->enum('tingkat_kelas', ["X", "XI", "XII"]);
             $table->date('tgl_masuk');
             $table->text('alasan_pindah');

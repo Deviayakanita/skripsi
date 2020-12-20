@@ -17,11 +17,11 @@ class CreateAlumniSiswaTable extends Migration
             $table->bigIncrements('id_alumni');
             $table->unsignedBigInteger('id_siswa');
             $table->foreign('id_siswa')->references('id_siswa')->on('peserta_didik');
-            $table->enum('jns_pt', ["Negri", "Swasta"]);
             $table->string('nm_pt', 50);
+            $table->enum('jns_pt', ["Negri", "Swasta"]);
             $table->string('nm_fak', 50);
             $table->string('nm_jurusan', 50);
-            $table->enum('sts_kerja', ["Bekerja", "Belum Bekerja"]);
+            $table->enum('melanjutkan', ["Bekerja", "Kuliah"]);
             $table->integer('status_alumni')-> unsigned();
             $table->timestamps();
         });
