@@ -1,5 +1,5 @@
 @extends('layout.blank')
-@section('title', 'Data Peserta Didik | Admin')
+@section('title', 'Data Mutasi Keluar | Admin')
 @section('topbaraccount')
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -26,7 +26,7 @@
 <section class="sidebar">
 <ul class="sidebar-menu" data-widget="tree">
     <li class="treeview">
-        <a href="{{url('layout/master')}}">
+        <a href="master">
             <i class="fa fa-home active"></i><span> Dashboard</span>
         </a>
     </li>
@@ -38,8 +38,8 @@
         </span>
       </a>
       <ul class="treeview-menu">
-        <li class="active"><a href="/listpesertadidik"><i class="fa fa-circle-o"></i> Data Peserta Didik</a></li>
-        <li><a href="/listortu"><i class="fa fa-circle-o"></i> Data Orang Tua</a></li>
+        <li><a href="listpesertadidik"><i class="fa fa-circle-o"></i> Data Peserta Didik</a></li>
+        <li><a href="listortu"><i class="fa fa-circle-o"></i> Data Orang Tua</a></li>
       </ul>
     </li>
     <li class="treeview">
@@ -50,12 +50,12 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="/listmtsmasuk"><i class="fa fa-circle-o"></i><span>Data Mutasi Masuk </span> </a></li>
-            <li><a href="{{url('mutasi_peserta_didik/listmtskeluar')}}"><i class="fa fa-circle-o"></i> Data Mutasi Keluar</a></li>     
+            <li><a href="listmtsmasuk"><i class="fa fa-circle-o"></i> Data Mutasi Masuk</a></li>
+            <li><a href="listmtskeluar"><i class="fa fa-circle-o"></i> Data Mutasi Keluar</a></li>     
         </ul>
     </li>
     <li class="treeview">
-        <a href="{{url('alumni/listalumni')}}">
+        <a href="listalumni">
         <i class="fa fa-edit"></i><span> Kelola Alumni</span>
         </a>
     </li>
@@ -70,34 +70,33 @@
 
 @section('breadcrumb')
   <li><a href="dashboard_admin"><i class="fa fa-home"></i> Menu</a></li>
-  <li> Kelola Peserta Didik</li>
-  <li class="active"> Data Peserta Didik</li>
+  <li> Kelola Mutasi</li>
+  <li class="active"> Data Mutasi Keluar</li>
 @endsection
 
 @section('content')
 <section class="content">
-<div class="row">
-  <div class="col-xs-12">
-    <div class="box">
-      <div class="box-header">
-          Daftar Peserta Didik
-      </div>
-        <div class="box-body pad table-responsive" style="width: 200px">
+  <div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                Daftar Mutasi Keluar Peserta Didik
+            </div>
+            <div class="box-body pad table-responsive" style="width: 200px">
           <td>
-            <a href="index"><button type="button" class="btn btn-block btn-primary">Tambah Peserta Didik</button></a>
+            <a href="index"><button type="button" class="btn btn-block btn-primary">Tambah Mutasi Keluar</button></a>
           </td>
-          </div>
-
+        </div>
             <div class="box-body">
                 <table id='listusers' class="table table-bordered table-striped">
                     <thead>
                         <th>No</th>
+                        <th>No Surat Pindah</th>
                         <th>NIS</th>
                         <th>Nama Lengkap</th>
                         <th>Jenis Kelamin</th>
-                        <th>Tanggal Lahir</th>
-                        <th>No Telepon</th>
-                        <th>Alamat</th>
+                        <th>Tanggal Pindah</th>
+                        <th>Sekolah Tujuan</th>
                         <th>Status</th>
                         <th style="text-align: center">Aksi</th>
                     </thead>
@@ -105,26 +104,26 @@
                         @php
                             $i=1;
                         @endphp
-                        @foreach ($pesertadidiks as $pesertadidik)
+                        @foreach ($mutasikeluars as $mutasikeluar)
                             <tr>
                                 <td>{{ $i }}</td>
-                                <td>{{ $pesertadidik->nis }}</td>
-                                <td>{{ $pesertadidik->nm_siswa }}</td>
-                                <td>{{ $pesertadidik->jns_kelamin }}</td>
-                                <td>{{ $pesertadidik->tgl_lahir }}</td>
-                                <td>{{ $pesertadidik->no_tlpn }}</td>
-                                <td>{{ $pesertadidik->alamat_siswa }}</td>
-                                <td>{{ $pesertadidik->sts_siswa }}</td>
+                                <td>{{ $mutasimasuk->no_srt_pindah }}</td>
+                                <td>{{ $mutasimasuk->nis }}</td>
+                                <td>{{ $mutasimasuk->nm_siswa }}</td>
+                                <td>{{ $mutasimasuk->jns_kelamin }}</td>
+                                <td>{{ $mutasimasuk->tgl_pindah }}</td>
+                                <td>{{ $mutasimasuk->sekolah_tujuan }}</td>
+                                <td>{{ $mutasimasuk->status_mutasi }}</td>
                                 <td style="text-align: center;">
-                                    <a href="#" class="btn btn-primary">View</a>
-                                    <a href="/editpesertadidik/edit/{{ $pesertadidik->id_siswa }}" class="btn btn-primary">Edit</a>
+                                  <a href="#" class="btn btn-primary">View</a>
+                                  <a href="editmutasikeluar/edit/{{ $mutasikeluar->id_mut_klr }}" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                             @php
                                 $i++;
                             @endphp
                         @endforeach
-                    </tbody>
+                   </tbody>
                 </table>
             </div>
     <!-- /.box-body -->

@@ -19,6 +19,12 @@ class AlumniController extends Controller
         return view('alumni.alumni');
     }
 
+    public function list()
+    {
+        $alumnis = Alumni::all();
+        return view('alumni/listalumni', compact('alumnis'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -68,8 +74,26 @@ class AlumniController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alumni = Alumni::find($id);
+        return view('alumni/editalumni', compact('alumni'));
     }
+
+    public function editmutasimasuk (Request $request, $id)
+    {
+
+         DB::table('alumni_siswa')->where('id_alumni', $id)
+            -> update([
+            // 'nis' => request('nis'),
+            'nm_pt' => request('nm_pt'),
+            'id_siswa' => auth()->id_siswa(),
+            'jns_pt' => request('jns_pt'),
+            'nm_fak' => request('nm_fak'),
+            'nm_jurusan' => request('nm_jurusan'),
+            'melanjutkan' => request('melanjutkan'),
+            'status_alumni' => request('status_alumni'),
+            ]);
+
+        return redirect('listalumni');
 
     /**
      * Update the specified resource in storage.

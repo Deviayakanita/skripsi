@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Mutasimasuk extends Model
 {
 	protected $table = 'mutasi_masuk';
+    protected $primaryKey = 'id_mut_msk';
 
     public $fillable = [
     	'no_srt_pindah',
-        'nis',
+        // 'nis',
     	'id_siswa',
     	'asal_sekolah',
         'tingkat_kelas',

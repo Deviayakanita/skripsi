@@ -22,25 +22,43 @@ Route::get('/regis', 'App\Http\Controllers\InsertRegister@insert');
 
 Auth::routes(); 
 
-Route::get('/admin', 'App\Http\Controllers\AdminController@index') -> middleware('auth');
+Route::get('/dashboard_admin', 'App\Http\Controllers\AdminController@index') -> middleware('auth');
 
-//route peserta didik crud
+//route peserta didik crud user admin
 Route::resource('pesertadidik', 'App\Http\Controllers\PesertadidikController');
-Route::get('list', 'App\Http\Controllers\PesertadidikController@list');	
-Route::get('editpesertadidik/edit/{id}', 'App\Http\Controllers\PesertadidikController@edit');	
-Route::patch('pesertadidikedit/{id}', 'App\Http\Controllers\PesertadidikController@editpesertadidik');	
-//route orang tua crud
+Route::get('index', 'App\Http\Controllers\PesertadidikController@index');	
+Route::get('listpesertadidik', 'App\Http\Controllers\PesertadidikController@list');	
+Route::get('/editpesertadidik/edit/{id}', 'App\Http\Controllers\PesertadidikController@edit');	
+Route::patch('/pesertadidikedit/{id}', 'App\Http\Controllers\PesertadidikController@editpesertadidik');	
+//route orang tua crud user admin
 Route::resource('orangtua', 'App\Http\Controllers\OrangtuaController');
-
-//route mutasi masuk crud
+Route::get('listortu', 'App\Http\Controllers\OrangtuaController@list');	
+Route::get('editortu/edit/{id}', 'App\Http\Controllers\OrangtuaController@edit');	
+Route::patch('ortuedit/{id}', 'App\Http\Controllers\OrangtuaController@editortu');
+//route mutasi masuk crud user admin
 Route::resource('mutasimasuk', 'App\Http\Controllers\MutasimasukController');
-
-//route mutasi keluar crud
+Route::get('listmutasimasuk', 'App\Http\Controllers\MutasimasukController@list');	
+Route::get('editmutasimasuk/edit/{id}', 'App\Http\Controllers\MutasimasukController@edit');	
+Route::patch('mutasimasukedit/{id}', 'App\Http\Controllers\MutasimasukController@editmutasimasuk');
+//route mutasi keluar crud user admin
 Route::resource('mutasikeluar', 'App\Http\Controllers\MutasikeluarController');
+Route::get('listmutasikeluar', 'App\Http\Controllers\MutasikeluarController@list');	
+Route::get('editmutasikeluar/edit/{id}', 'App\Http\Controllers\MutasikeluarController@edit');	
+Route::patch('mutasikeluaredit/{id}', 'App\Http\Controllers\MutasikeluarController@editmutasikeluar');
 
-//route alumni crud
+//route alumni crud user admin
 Route::resource('alumni', 'App\Http\Controllers\AlumniController');
+Route::get('listalumni', 'App\Http\Controllers\AlumniController@list');	
+Route::get('editalumni/edit/{id}', 'App\Http\Controllers\AlumniController@edit');	
+Route::patch('alumniedit/{id}', 'App\Http\Controllers\AlumniController@editalumni');
 
+Route::get('master', function () {
+    return view('layout/master');
+});
+
+Route::get('dashboard', function () {
+    return view('layout/dashboard_admin');
+});
 
 //Route user admin
 //Route user kepala sekolah

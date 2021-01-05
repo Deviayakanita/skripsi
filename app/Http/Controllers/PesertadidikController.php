@@ -66,6 +66,7 @@ class PesertadidikController extends Controller
             'sts_siswa' => request('sts_siswa'),
             'keterangan' => request('keterangan'),
         ]);
+        return redirect('listpesertadidik');
     }
 
     /**
@@ -114,7 +115,7 @@ class PesertadidikController extends Controller
             'keterangan' => request('keterangan'),
             ]);
 
-        return redirect('/peserta_didik/listpesertadidik');
+        return redirect('listpesertadidik');
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('layout.blank')
-@section('title', 'Data Mutasi Masuk | Admin')
+@section('title', 'Data Mutasi Masuk | Kepsek')
 @section('topbaraccount')
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -71,72 +71,60 @@
 @section('breadcrumb')
   <li><a href="dashboard_admin"><i class="fa fa-home"></i> Menu</a></li>
   <li> Kelola Mutasi</li>
-  <li class="active"> Tambah Data Mutasi Masuk</li>
+  <li class="active"> Data Mutasi Masuk</li>
 @endsection
 
 @section('content')
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                Daftar Mutasi Masuk Peserta Didik
+            </div>
 
-  <section class="content">
-  <form action="{{route('mutasimasuk.store')}}" method="post" style="margin-left: 200px; margin-right: 200px">
-    {{csrf_field()}}
-
-    <div class="box">
-
-      <form role="form">
-      <div class="box-body">
-
-    <div class="form-group">
-      <label for="inputsurat">No Surat Pindah</label>
-      <input type="text" class="form-control" id="inputsurat" name="no_srt_pindah">
-    </div>
-
-   <!--  <div class="form-group col-md-6">
-      <label for="inputnisn">NIS</label>
-      <input type="nisn" class="form-control" id="inputnisn" name="nis">
-    </div> -->
-
-    <div class="form-group">
-      <label for="inputasalsekolah">Asal Sekolah</label>
-      <input type="text" class="form-control" id="inputasalsekolah" name="asal_sekolah">
-    </div>
-
-    <div class="form-group">
-      <label for="inputState">Tingkat Kelas</label>
-      <select id="inputState" class="form-control" name="tingkat_kelas">
-        <option selected>pilih</option>
-        <option value="X">X</option>
-        <option value="XI">XI</option>
-        <option value="XII">XII</option>
-      </select>
-    </div>
-        
-    <div class="form-group">
-      <label for="input_tglmasuk">Tanggal Masuk</label>
-      <input type="date" class="form-control" id="input_tglmasuk" name="tgl_masuk">
-    </div>
-
-    <div class="form-group">
-      <label for="inputalasan">Alasan Pindah</label>
-      <input type="text" class="form-control" id="inputalasan" name="alasan_pindah">
-    </div>
-
-     <div class="form-group">
-      <label for="inputState">Status Mutasi</label>
-      <select id="inputState" class="form-control" name="status_mutasi">
-        <option selected>pilih</option>
-        <option value="1">AKTIF</option>
-        <option value="0">NON AKTIF</option>
-      </select>
-    </div>
-
-     <div>
-      <button type="submit" class="btn btn-primary" style="margin-left: 15px">SIMPAN DATA</button>
-    </div>
-
+            <div class="box-body">
+                <table id='listusers' class="table table-bordered table-striped">
+                    <thead>
+                        <th>No</th>
+                        <th>No Surat Pindah</th>
+                        <th>NIS</th>
+                        <th>Nama Lengkap</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Tanggal Masuk</th>
+                        <th>Asal Sekolah</th>
+                        <th>Status</th>
+                        <th style="text-align: center">Aksi</th>
+                    </thead>
+                    <tbody>
+                        @php
+                            $i=1;
+                        @endphp
+                        @foreach ($mutasimasuks as $mutasimasuk)
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>{{ $mutasimasuk->no_srt_pindah }}</td>
+                                <td>{{ $mutasimasuk->nis }}</td>
+                                <td>{{ $mutasimasuk->nm_siswa }}</td>
+                                <td>{{ $mutasimasuk->jns_kelamin }}</td>
+                                <td>{{ $mutasimasuk->tgl_masuk }}</td>
+                                <td>{{ $mutasimasuk->asal_sekolah }}</td>
+                                <td>{{ $mutasimasuk->status_mutasi }}</td>
+                                <td style="text-align: center;">
+                                  <a href="#" class="btn btn-primary">View</a>
+                                </td>
+                            </tr>
+                            @php
+                                $i++;
+                            @endphp
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+    <!-- /.box-body -->
+   </div>
+  </div>
 </div>
-</form>
-</div>
-</section>  
 @endsection
 
 @section('content-footer')

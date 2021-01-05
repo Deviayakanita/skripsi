@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Orangtua extends Model
 {
 	protected $table = 'orang_tua';
+    protected $primaryKey = 'id_orang_tua';
 
     public $fillable = [
         // 'nis',

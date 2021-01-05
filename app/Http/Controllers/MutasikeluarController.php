@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
-use App\Models\Pesertadidik;
 use App\Models\Mutasikeluar;
+use App\Models\Pesertadidik;
 
 class MutasikeluarController extends Controller
 {
@@ -17,6 +20,12 @@ class MutasikeluarController extends Controller
     public function index()
     {
         return view('mutasi_peserta_didik.mutasikeluar');
+    }
+
+    public function list()
+    {
+        $mutasikeluars = Mutasikeluar::all();
+        return view('mutasi_peserta_didik/listmtskeluar', compact('mutasikeluars'));
     }
 
     /**
@@ -39,11 +48,11 @@ class MutasikeluarController extends Controller
     {
         Mutasikeluar::create([
             'no_srt_pindah' => request('no_srt_pindah'),
-            'nis' => request('nis'),
+            // 'nis' => request('nis'),
             'id_siswa' => auth()->id_siswa(),
             'sekolah_tujuan' => request('sekolah_tujuan'),
             'tingkat_kelas' => request('tingkat_kelas'),
-            'tgl_masuk' => request('tgl_masuk'),
+            'tgl_pindah' => request('tgl_pindah'),
             'alasan_pindah' => request('alasan_pindah'),
             'status_mutasi' => request('status_mutasi'),
         ]);
@@ -68,8 +77,27 @@ class MutasikeluarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mutasikeluar = Mutasikeluar::find($id);
+        return view('mutasi_peserta_didik/editmtskeluar', compact('mutasimasuk'));
     }
+
+    public function editmutasimasuk (Request $request, $id)
+    {
+
+         DB::table('mutasi_keluar')->where('id_mts_klr', $id)
+            -> update([
+            'no_srt_pindah' => request('no_srt_pindah'),
+            // 'nis' => request('nis'),
+            'id_siswa' => auth()->id_siswa(),
+            'sekolah_tujuan' => request('sekolah_tujuan'),
+            'tingkat_kelas' => request('tingkat_kelas'),
+            'tgl_pindah' => request('tgl_pindah'),
+            'alasan_pindah' => request('alasan_pindah'),
+            'status_mutasi' => request('status_mutasi'),
+            ]);
+
+        return redirect('listmutasikeluar');
+
 
     /**
      * Update the specified resource in storage.

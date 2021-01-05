@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
-use App\Models\Pesertadidik;
 use App\Models\Mutasimasuk;
+use App\Models\Pesertadidik;
 
 class MutasimasukController extends Controller
 {
@@ -17,6 +20,12 @@ class MutasimasukController extends Controller
     public function index()
     {
         return view('mutasi_peserta_didik.mutasimasuk');
+    }
+
+     public function list()
+    {
+        $mutasimasuks = Mutasimasuk::all();
+        return view('mutasi_peserta_didik/listmtsmasuk', compact('mutasimasuks'));
     }
 
     /**
@@ -39,7 +48,7 @@ class MutasimasukController extends Controller
     {
         Mutasimasuk::create([
             'no_srt_pindah' => request('no_srt_pindah'),
-            'nis' => request('nis'),
+            // 'nis' => request('nis'),
             'id_siswa' => auth()->id_siswa(),
             'asal_sekolah' => request('asal_sekolah'),
             'tingkat_kelas' => request('tingkat_kelas'),
@@ -68,8 +77,29 @@ class MutasimasukController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mutasimasuk = Mutasimasuk::find($id);
+        return view('mutasi_peserta_didik/editmtsmasuk', compact('mutasimasuk'));
     }
+
+    public function editmutasimasuk (Request $request, $id)
+    {
+
+         DB::table('mutasi_masuk')->where('id_mts_msk', $id)
+            -> update([
+            'no_srt_pindah' => request('no_srt_pindah'),
+            // 'nis' => request('nis'),
+            'id_siswa' => auth()->id_siswa(),
+            'asal_sekolah' => request('asal_sekolah'),
+            'tingkat_kelas' => request('tingkat_kelas'),
+            'tgl_masuk' => request('tgl_masuk'),
+            'alasan_pindah' => request('alasan_pindah'),
+            'status_mutasi' => request('status_mutasi'),
+            ]);
+
+        return redirect('listmutasimasuk');
+
+
+
 
     /**
      * Update the specified resource in storage.

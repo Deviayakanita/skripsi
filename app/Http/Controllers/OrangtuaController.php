@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
-use App\Models\Pesertadidik;
 use App\Models\Orangtua;
+use App\Models\Pesertadidik;
+
 
 class OrangtuaController extends Controller
 {
@@ -18,6 +21,12 @@ class OrangtuaController extends Controller
     public function index()
     {
         return view('orang_tua.orangtua');
+    }
+
+    public function list()
+    {
+        $ortus = Orangtua::all();
+        return view('orang_tua/listortu', compact('ortus'));
     }
 
     /**
@@ -72,7 +81,28 @@ class OrangtuaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $orangtua = Orangtua::find($id);
+        return view('orang_tua/editortu', compact('orangtua'));
+    }
+
+    public function editortu (Request $request, $id)
+    {
+        DB::table('orang_tua')->where('id_orang_tua', $id)
+            -> update([
+            // 'nis' => request('nis'),
+            'nm_ayah' => request('nm_ayah'),
+            'id_siswa' => auth()->id_siswa(),
+            'job_ayah' => request('job_ayah'),
+            'pddk_ayah' => request('pddk_ayah'),
+            'penghasilan_ayah' => request('penghasilan_ayah'),
+            'nm_ibu' => request('nm_ibu'),
+            'job_ibu' => request('job_ibu'),
+            'pddk_ibu' => request('pddk_ibu'),
+            'penghasilan_ibu' => request('penghasilan_ibu'),
+            'sts_orang_tua' => request('sts_orang_tua'),
+            ]);
+
+        return redirect('listortu');
     }
 
     /**

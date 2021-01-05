@@ -1,5 +1,5 @@
 @extends('layout.blank')
-@section('title', 'Data Mutasi Masuk | Admin')
+@section('title', 'Data Alumni | Admin')
 @section('topbaraccount')
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -70,68 +70,87 @@
 
 @section('breadcrumb')
   <li><a href="dashboard_admin"><i class="fa fa-home"></i> Menu</a></li>
-  <li> Kelola Mutasi</li>
-  <li class="active"> Tambah Data Mutasi Masuk</li>
+  <li> Kelola Alumni</li>
+  <li class="active"> Edit Data Alumni</li>
 @endsection
 
 @section('content')
 
   <section class="content">
-  <form action="{{route('mutasimasuk.store')}}" method="post" style="margin-left: 200px; margin-right: 200px">
+	<form action="{{url('alumniedit/' .$alumni->alumni)}}" method="post" style="margin-left: 200px; margin-right: 200px">
+    @method('patch')
     {{csrf_field()}}
 
     <div class="box">
 
       <form role="form">
       <div class="box-body">
+        
 
-    <div class="form-group">
-      <label for="inputsurat">No Surat Pindah</label>
-      <input type="text" class="form-control" id="inputsurat" name="no_srt_pindah">
+     <!--  <div class="form-group col-md-6">
+      <label for="inputnisn">NIS</label>
+      <input type="nisn" class="form-control" id="inputnisn" name="nis" value="{{$alumni->nis}}">
+    </div> -->
+
+    <!-- <div class="form-group col-md-6">
+      <label for="inputnama">Nama Lengkap Siswa</label>
+      <input type="nama" class="form-control" id="inputnama" name="nm_siswa" value="{{$alumni->nm_siswa}}">
     </div>
 
-   <!--  <div class="form-group col-md-6">
-      <label for="inputnisn">NIS</label>
-      <input type="nisn" class="form-control" id="inputnisn" name="nis">
+    <div class="form-group col-md-4">
+      <label for="inputState">Jenis Kelamin</label>
+      <select id="inputState" class="form-control" name="jns_kelamin" value="{{$alumni->jns_kelamin}}">
+        <option selected>pilih</option>
+        <option value="Laki - Laki">Laki - Laki</option>
+        <option value="Perempuan">Perempuan</option>
+      </select>
     </div> -->
 
     <div class="form-group">
-      <label for="inputasalsekolah">Asal Sekolah</label>
-      <input type="text" class="form-control" id="inputasalsekolah" name="asal_sekolah">
-    </div>
-
-    <div class="form-group">
-      <label for="inputState">Tingkat Kelas</label>
-      <select id="inputState" class="form-control" name="tingkat_kelas">
-        <option selected>pilih</option>
-        <option value="X">X</option>
-        <option value="XI">XI</option>
-        <option value="XII">XII</option>
-      </select>
-    </div>
-        
-    <div class="form-group">
-      <label for="input_tglmasuk">Tanggal Masuk</label>
-      <input type="date" class="form-control" id="input_tglmasuk" name="tgl_masuk">
-    </div>
-
-    <div class="form-group">
-      <label for="inputalasan">Alasan Pindah</label>
-      <input type="text" class="form-control" id="inputalasan" name="alasan_pindah">
+      <label for="inputnama">Nama Perguruan Tinggi</label>
+      <input type="text" class="form-control" id="inputnama" name="nm_pt" value="{{$alumni->nm_pt}}">
     </div>
 
      <div class="form-group">
-      <label for="inputState">Status Mutasi</label>
-      <select id="inputState" class="form-control" name="status_mutasi">
+      <label for="inputState">Jenis Perguruan Tinggi</label>
+      <select id="inputState" class="form-control" name="jns_pt" value="{{$alumni->jns_pt}}">
+        <option selected>pilih</option>
+        <option value="Negri">Negri</option>
+        <option value="Swasta">Swasta</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="inputnamafk">Nama Fakultas</label>
+      <input type="text" class="form-control" id="inputnamafk" name="nm_fak" value="{{$alumni->nm_fak}}">
+    </div>
+
+    <div class="form-group">
+      <label for="inputnamajurus">Nama Jurusan</label>
+      <input type="text" class="form-control" id="inputnamajurus" name="nm_jurusan" value="{{$alumni->nm_jurusan}}">
+    </div>
+
+    <div class="form-group">
+      <label for="inputState">Melanjutkan</label>
+      <select id="inputState" class="form-control" name="melanjutkan" value="{{$alumni->melanjutkan}}">
+        <option selected>pilih</option>
+        <option value="Bekerja">Bekerja</option>
+        <option value="Belum Bekerja">Kuliah</option>
+      </select>
+    </div>
+
+     <div class="form-group">
+      <label for="inputState">Status Alumni</label>
+      <select id="inputState" class="form-control" name="status_alumni" value="{{$alumni->status_alumni}}">
         <option selected>pilih</option>
         <option value="1">AKTIF</option>
         <option value="0">NON AKTIF</option>
       </select>
     </div>
 
-     <div>
-      <button type="submit" class="btn btn-primary" style="margin-left: 15px">SIMPAN DATA</button>
-    </div>
+  <div>
+    <button type="submit" class="btn btn-primary">SIMPAN</button>
+  </div>
 
 </div>
 </form>

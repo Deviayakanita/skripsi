@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alumni extends Model
 {
-	protected $table = 'alumni';
+	protected $table = 'alumni_siswa';
+    protected $primaryKey = 'id_alumni';
 
     public $fillable = [
         // 'nis',

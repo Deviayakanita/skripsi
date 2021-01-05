@@ -38,8 +38,8 @@
         </span>
       </a>
       <ul class="treeview-menu">
-        <li class="active"><a href="/listpesertadidik"><i class="fa fa-circle-o"></i> Data Peserta Didik</a></li>
-        <li><a href="/listortu"><i class="fa fa-circle-o"></i> Data Orang Tua</a></li>
+        <li><a href="{{url('peserta_didik/listpesertadidik')}}"><i class="fa fa-circle-o active"></i> Data Peserta Didik</a></li>
+        <li><a href="{{url('orang_tua/listortu')}}"><i class="fa fa-circle-o"></i> Data Orang Tua</a></li>
       </ul>
     </li>
     <li class="treeview">
@@ -50,7 +50,7 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="/listmtsmasuk"><i class="fa fa-circle-o"></i><span>Data Mutasi Masuk </span> </a></li>
+            <li><a href="{{url('mutasi_peserta_didik/listmtsmasuk')}}"><i class="fa fa-circle-o"></i> Data Mutasi Masuk</a></li>
             <li><a href="{{url('mutasi_peserta_didik/listmtskeluar')}}"><i class="fa fa-circle-o"></i> Data Mutasi Keluar</a></li>     
         </ul>
     </li>

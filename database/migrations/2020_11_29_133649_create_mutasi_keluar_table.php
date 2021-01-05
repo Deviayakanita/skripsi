@@ -20,7 +20,7 @@ class CreateMutasiKeluarTable extends Migration
             $table->string('no_srt_pindah', 30);
             $table->string('sekolah_tujuan', 50);
             $table->enum('tingkat_kelas', ["X", "XI", "XII"]);
-            $table->date('tgl_masuk');
+            $table->date('tgl_pindah');
             $table->text('alasan_pindah');
             $table->integer('status_mutasi')-> unsigned();
             $table->timestamps();
